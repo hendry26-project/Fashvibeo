@@ -1,0 +1,4 @@
+
+# Set custom headers for all paths
+/* 
+  X-Custom-Header: value
