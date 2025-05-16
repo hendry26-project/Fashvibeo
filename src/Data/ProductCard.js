@@ -1,13 +1,16 @@
-import { hover } from "@testing-library/user-event/dist/hover";
+
 import { useState } from "react";
 import { Link } from "react-router-dom";
+
+
+
 
 function ProductCard({ product }) {
     const [mainImg, setMainImg] = useState(product.image1);
   
    
  const [selectedSize, setSelectedSize] = useState(null);
-  const [hoveredSize, setHoveredSize] = useState(null);
+  const [hoveredSize] = useState(null);
 
 
   const handleClick = (size) => {

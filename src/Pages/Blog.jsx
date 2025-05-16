@@ -94,7 +94,7 @@ function Blog() {
               <div className="blog-details">
                 <h4>{studycase.title}</h4>
                 <p>{studycase.paragraph}</p>
-                <a href="">CONTINUE READING</a>
+                <a href="/blog">CONTINUE READING</a>
               </div>
               <h1>{studycase.no}</h1>
             </div>

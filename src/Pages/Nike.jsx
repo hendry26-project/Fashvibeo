@@ -1,6 +1,6 @@
-import React from 'react';
+
 import '../index.css';
-import { Link } from 'react-router-dom';
+
 import ProductCard from '../Data/ProductCard';
 import MotionSection from '../Data/MotionSection';
 import Footer from '../Data/Footer';

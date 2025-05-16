@@ -1,5 +1,4 @@
 
-import { useState } from 'react';
 
 function PaymentForm({
   paymentInfo,
@@ -8,85 +7,7 @@ function PaymentForm({
   setPaymentErrors,
   handleCheckout,
   togglePayment
-})        { 
-
-
-
- const [coupon, setCoupon] = useState('');
-  const [discount, setDiscount] = useState(0);
- 
- 
-
-
-
-  
-
-
-  const applyCoupon = () => {
-    const code = coupon.trim().toLowerCase();
-    if (code === 'save10') {
-      setDiscount(10);
-      alert('Coupon applied! $10 discount granted.');
-    } else {
-      setDiscount(0);
-      alert('Invalid or expired coupon.');
-    }
-  };
-
- 
-  const handlePaymentChange = e => {
-    const { name, value } = e.target;
-    setPaymentInfo(prev => ({ ...prev, [name]: value }));
-  };
-
-  const validatePayment = () => {
-    const errors = {};
-    if (!paymentInfo.name.trim()) errors.name = 'Name is required';
-    if (!paymentInfo.phone.trim()) errors.phone = 'Phone is required';
-    if (!paymentInfo.address.trim()) errors.address = 'Address is required';
-    if (!paymentInfo.cardNumber.trim()) errors.cardNumber = 'Card Number is required';
-    else if (!/^\d{16}$/.test(paymentInfo.cardNumber)) errors.cardNumber = 'Card Number must be 16 digits';
-    if (!paymentInfo.expiryMonth.trim()) errors.expiryMonth = 'Expiry Month is required';
-    else if (!/^(0[1-9]|1[0-2])$/.test(paymentInfo.expiryMonth)) errors.expiryMonth = 'Expiry Month invalid';
-    if (!paymentInfo.expiryYear.trim()) errors.expiryYear = 'Expiry Year is required';
-    else if (!/^\d{4}$/.test(paymentInfo.expiryYear)) errors.expiryYear = 'Expiry Year must be 4 digits';
-    if (!paymentInfo.cvv.trim()) errors.cvv = 'CVV is required';
-    else if (!/^\d{3,4}$/.test(paymentInfo.cvv)) errors.cvv = 'CVV must be 3 or 4 digits';
-    setPaymentErrors(errors);
-    return Object.keys(errors).length === 0;
-  };
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
-
+}) {
   // Helper to handle input changes
   const handleChange = e => {
     const { name, value } = e.target;

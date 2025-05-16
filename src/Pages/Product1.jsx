@@ -2,7 +2,6 @@
 import '../index.css';
 import { Link } from 'react-router-dom';
 import ImageGallery from '../Data/ImageGallery.js';
-import MotionSection from '../Data/MotionSection.js';
 
  
 import Footer from '../Data/Footer.js';

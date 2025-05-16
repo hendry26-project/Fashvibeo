@@ -1,8 +1,8 @@
-import React from 'react'
+
 import '../index.css';
 import { Link } from 'react-router-dom';
 import ImageGallery from '../Data/ImageGallery';
-import MotionSection from '../Data/MotionSection';
+
 import Footer from '../Data/Footer';
 import Header from '../Data/Header';
 

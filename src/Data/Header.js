@@ -2,7 +2,9 @@ import { Link } from 'react-router-dom';
 import MotionSection from "./MotionSection";
 import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars, faXmark } from '@fortawesome/free-solid-svg-icons';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
+
+
 
 const Header = () => {
   // State to manage the current language
@@ -101,7 +103,7 @@ const Header = () => {
   </Link>
 
   <div id="close" onClick={handleCloseClick} >
-    <FontAwesomeIcon icon={faXmark} />
+ <FontAwesomeIcon icon={faTimes} />
   </div>
 </li>
 

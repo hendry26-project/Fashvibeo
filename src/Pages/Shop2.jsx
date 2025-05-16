@@ -19,11 +19,7 @@ function Shop2() {
          </div>
        </div>
      )}*/
-  const handleRedirect = () => {
-
-    window.location.href = "";
-  }
-
+  
 
   return (
 
