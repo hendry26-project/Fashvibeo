@@ -23,7 +23,7 @@ function Product2() {
 
         window.location.href = "";
     }
-   
+
     const products = [
         {
             image: '/assets/img/a1.jpg',
@@ -51,6 +51,12 @@ function Product2() {
             price: 38,
             cartLink: '/cart'
         },
+         {
+            image: '/assets/img/a7.jpg',
+            title: 'Aloha Shirt ',
+            price: 58,
+            cartLink: '/cart'
+        },
 
     ]
     return (
@@ -60,25 +66,25 @@ function Product2() {
 
             <div>
 
-          <Header/>
+                <Header />
 
 
 
 
                 <section id="prodetails" className="section-p1 section-m1">
-                <ImageGallery
-        mainImage="/assets/img/HSS152-Floral-Hipster.jpg"
-        thumbnails={[
-          "/assets/img/p1.webp",
-          "/assets/img/p2.webp",
-         
-         
-          "/assets/img/p3.jpg",
-          "/assets/img/a5.jpg"
-        ]}
-      />     
+                    <ImageGallery
+                        mainImage="/assets/img/HSS152-Floral-Hipster.jpg"
+                        thumbnails={[
+                            "/assets/img/p1.webp",
+                            "/assets/img/p2.webp",
 
-                  
+
+                            "/assets/img/p3.jpg",
+                            "/assets/img/a5.jpg"
+                        ]}
+                    />
+
+
                     <div className="single-pro-details">
                         <h6>Home / Hawaiian shirts</h6>
                         <h4>Floral Hipster</h4>
@@ -103,13 +109,14 @@ function Product2() {
 
 
                 </section>
-                <div class="Featured">    <h2>Related products</h2>
+                <div class="Featured">
+                    <h2>Related products</h2>
 
                 </div>
-
                 <section id="product1" className="section-p1">
-                    <div className="pro-con">
-                        {products.map((product) => (
+                    <div className="pro-con" style={{ display: 'contents' }}>
+                        {products.slice(0, 10).map((product) => (
+
                             <div key={product.id} className="pro" onClick={() => handleRedirect(product.id)}>
                                 <img src={product.image} alt={product.title} height="290px" />
                                 <div className="des">
@@ -118,7 +125,7 @@ function Product2() {
                                     <div className="star">★★★★★</div>
                                     <h4>${product.price}</h4>
                                     <a href={product.cartLink} onClick={(e) => e.stopPropagation()}>
-                                        <i className="fa fa-shopping-cart"></i>
+                                    <p>Add to cart</p>
                                     </a>
                                 </div>
                             </div>
@@ -127,18 +134,19 @@ function Product2() {
                 </section>
 
 
-           
 
-      <Footer/>
 
-               
+                <Footer />
 
+
+
+            </div>
             </div>
 
 
 
-        </div>
-    );
+
+            );
 }
 
-export default Product2;
+            export default Product2;

@@ -50,8 +50,15 @@ function Product1() {
             cartLink: '/cart'
         },
         {
-            image: '/assets/img/shorts.webp',
+            image: '/assets/img/T4.jpg',
             price: 150,
+            cartLink: '/cart'
+        },
+         {
+            image: '/assets/img/n2.jpg',
+
+
+            price: 88,
             cartLink: '/cart'
         },
 
@@ -123,8 +130,8 @@ function Product1() {
 
 
      <section id="product1" className="section-p1">
-                    <div className="pro-con">
-                        {products.map((product) => (
+                    <div className="pro-con" style={{display:'contents'}}>
+                        {products.slice(0, 10).map((product) => (
                               
                             <div key={product.id} className="pro" onClick={() => handleRedirect(product.id)}>
                                 <img src={product.image} alt={product.title} height="290px" />
@@ -134,7 +141,7 @@ function Product1() {
                                     <div className="star">★★★★★</div>
                                     <h4>${product.price}</h4>
                                     <a href={product.cartLink} onClick={(e) => e.stopPropagation()}>
-                                        <i className="fa fa-shopping-cart"></i>
+                                        <p>Add to cart</p>
                                     </a>
                                 </div>
                             </div>

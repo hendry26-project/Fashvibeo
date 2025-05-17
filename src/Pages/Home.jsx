@@ -2,7 +2,15 @@ import { useEffect, useState } from 'react';
 
 import { motion } from 'framer-motion';
 import { Link, useNavigate } from 'react-router-dom';
-import { Product1s, Shoes, Products } from '../Data/Productdata';
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination, Autoplay } from "swiper/modules";
+
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+
+
+import { Product1s, Shoes,Products } from '../Data/Productdata';
 import MotionSection from '../Data/MotionSection';
 import Footer from '../Data/Footer';
 import '../index.css';
@@ -78,31 +86,69 @@ function Index() {
         </div>
       </MotionSection>
 
-      <section id="product1" className="section-p1">
-        <div className="pro-con flex flex-wrap justify-center gap-6">
-          {Product1s.map((product1) => (
+      <section id="product1" style={{display:"flex"}} className="section-p1">
+      <Swiper
+        modules={[Navigation, Pagination, Autoplay]}
+        spaceBetween={10}
+        slidesPerView={4}
+        centeredSlides={true}
+        navigation
+        pagination={{ clickable: true }}
+        autoplay={{ delay: 3000, disableOnInteraction: false }}
+        loop={true}
+         breakpoints={{
+    375: {
+      slidesPerView: 1,
+      centeredSlides:true   // iPhone X and similar
+    },
+    768: {
+      slidesPerView: 2,
+      centeredSlides:false   // tablets like iPad
+    },
+    1024: {
+      slidesPerView: 4, 
+      centeredSlides:false  // Windows desktop and larger screens
+    },
+  }}
+      className="pro-con "  
+      >
+        {Product1s.map((product1) => (
+          <SwiperSlide key={product1.id}>
             <motion.div
-              key={`featured-${product1.id}`}
-              initial={{ opacity: 0, y: -80 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ type: 'spring', stiffness: 300, delay: product1.id * 0.1, damping: 20 }}
-              className="pro w-[250px] cursor-pointer"
               onClick={() => navigate(product1.link)}
+              initial={{ opacity: 0, rotateX: 15, rotateY: -15, scale: 0.9 }}
+              animate={{ opacity: 1, rotateX: 0, rotateY: 0, scale: 1 }}
+              transition={{ type: "spring", stiffness: 120, damping: 15, delay: product1.id * 0.2 }}
+              
+              className="pro w-[250px] cursor-pointer"
+              style={{
+                borderRadius: "15px",
+                
+                color: "#00f0ff",
+                padding: "10px",
+                perspective: 800,
+              }}
             >
-              <img src={product1.image} alt={product1.title} height="290px" />
+              <img
+                src={product1.image}
+                alt={product1.title}
+                height="290px"
+                style={{ borderRadius: "12px", marginBottom: "12px" }}
+              />
               <div className="des">
                 <span className="i">{product1.brand}</span>
                 <h5>{product1.title}</h5>
                 <div className="star">★★★★★</div>
                 <h4>${product1.price}</h4>
-                <Link onClick={(e) => { e.stopPropagation(); navigate(product1.cartLink); }}>
-                  <i className="fa fa-shopping-cart"></i>
+                <Link to={"/cart"} onClick={(e) => e.stopPropagation()}>
+                  <p>Add to cart</p>
                 </Link>
               </div>
             </motion.div>
-          ))}
-        </div>
-      </section>
+          </SwiperSlide>
+        ))}
+      </Swiper>
+    </section>
 
       <motion.div
         initial={{ opacity: 0, x: -200 }}
@@ -153,36 +199,78 @@ function Index() {
         </div>
       </MotionSection>
 
-   <section id="product1" className="section-p1">
-        <div className="pro-con flex flex-wrap justify-center gap-6">
-          {Products.map((product1) => (
-            <motion.div
-              key={product1.id}
-              initial={{ opacity: 0, y: -80 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{
-                type: "spring",
-                stiffness: 300,
-                delay: product1.id * 0.1,
-                damping: 20,
-              }}
-              className="pro w-[250px] cursor-pointer"
-              onClick={() => navigate(product1.link)}
-            >
-              <img src={product1.image} alt={product1.title} height="290px" />
-              <div className="des">
-                <span className="i">{product1.brand}</span>
-                <h5>{product1.title}</h5>
-                <div className="star">★★★★★</div>
-                <h4>${product1.price}</h4>
-                <a href={product1.cartLink} onClick={(e) => e.stopPropagation()}>
-                  <i className="fa fa-shopping-cart"></i>
-                </a>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      </section>
+   <section id="product1" style={{display:'flex'}} className="section-p1">
+      <Swiper
+        modules={[Navigation, Pagination, Autoplay]}
+        spaceBetween={10}
+        slidesPerView={4}
+        centeredSlides={true}
+        navigation
+        pagination={{ clickable: true }}
+        autoplay={{ delay: 3000, disableOnInteraction: false }}
+        loop={true}
+         breakpoints={{
+    375: {
+      slidesPerView: 1,
+      centeredSlides:true   // iPhone X and similar
+    },
+    768: {
+      slidesPerView: 2,
+      centeredSlides:false   // tablets like iPad
+    },
+    1024: {
+      slidesPerView: 4, 
+      centeredSlides:false  // Windows desktop and larger screens
+    },
+  }}
+      className="pro-con "  
+      >
+        {Products.map((product1) => (
+          <SwiperSlide key={product1.id}>
+    <motion.div
+      onClick={() => navigate(product1.link)}
+      initial={{ opacity: 0, rotateX: 15, rotateY: -15, scale: 0.9 }}
+      animate={{ opacity: 1, rotateX: 0, rotateY: 0, scale: 1 }}
+      transition={{ type: "spring", stiffness: 120, damping: 15, delay: product1.id * 0.2 }}
+      /* whileHover={{
+        scale: 1.08,
+        rotateX: [0, 5, -5, 0],
+        rotateY: [0, -5, 5, 0],
+        transition: {
+          duration: 1,
+          repeat: Infinity,
+          repeatType: "mirror",
+          ease: "easeInOut",
+        },
+      }} */
+      className="pro w-[250px] cursor-pointer"
+      style={{
+        borderRadius: "15px",
+        color: "#00f0ff",
+        padding: "10px",
+        perspective: 800,
+      }}
+    >
+      <img
+        src={product1.image}
+        alt={product1.title}
+        height="290px"
+        style={{ borderRadius: "12px", marginBottom: "12px" }}
+      />
+      <div className="des">
+        <span className="i">{product1.brand}</span>
+        <h5>{product1.title}</h5>
+        <div className="star">★★★★★</div>
+        <h4>${product1.price}</h4>
+        <Link href={product1.cartLink} onClick={(e) => e.stopPropagation()}>
+          <p>Add to cart</p>
+        </Link>
+      </div>
+    </motion.div>
+  </SwiperSlide>
+        ))}
+      </Swiper>
+    </section>
 
       <nav id="nav">
         <div className="navTop">

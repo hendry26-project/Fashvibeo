@@ -2,7 +2,7 @@
 import '../index.css';
 import { Link } from 'react-router-dom';
 import ImageGallery from '../Data/ImageGallery';
-import MotionSection from '../Data/MotionSection';
+
 import Footer from '../Data/Footer';
 import Header from '../Data/Header';
 
@@ -52,6 +52,13 @@ const products = [
         price: 150,
         cartLink: '/cart'
     },
+     {
+        image: '/assets/img/j6.webp',
+        brand:'Highlander',
+        title: '  Blue Relaxed Fit Clean Look Jeans',
+        price: 100,
+        cartLink: '/cart'
+    },
 
 ]
   return (
@@ -88,7 +95,8 @@ const products = [
             <input type="number" defaultValue="1"/>
             <button className="normal" ><Link to='/Cart' >Add to Cart</Link></button>
             <h4>Product Details:</h4>
-            <span>Highlander Men Blue Tapered Fit Clean Look Jeans
+            <span>Blue medium wash 5-pocket mid-rise jeans, clean look with heavy fade, has a button
+               and zip closure, waistband with belt loops
                 </span>
         </div>
 
@@ -99,8 +107,9 @@ const products = [
 
                 <section id="product1" className="section-p1">
                
-                    <div className="pro-con">
-                        {products.map((product) => (
+                   <div className="pro-con" style={{ display: 'contents' }}>
+                        {products.slice(0, 10).map((product) => (
+
                             <div key={product.id} className="pro" >
                                 <img src={product.image} alt={product.title} height="280px" />
                                 <div className="des">
@@ -109,7 +118,7 @@ const products = [
                                     <div className="star">★★★★★</div>
                                     <h4>${product.price}</h4>
                                     <a href={product.cartLink} onClick={(e) => e.stopPropagation()}>
-                                        <i className="fa fa-shopping-cart"></i>
+                                        <p>Add to cart</p>
                                     </a>
                                 </div>
                             </div>
@@ -118,17 +127,7 @@ const products = [
                 </section>
 
 
-                  <MotionSection>
-        <section id="news">
-          <div>
-            <h1>Subscribe To The Newsletter</h1>
-          </div>
-          <div className="sub">
-            <input type="email" placeholder="Enter your email" className="normal" /><br /><br />
-            <button className="normal">Subscribe</button>
-          </div>
-        </section>
-      </MotionSection>
+     
 
       <Footer/>
     </div>

@@ -293,9 +293,11 @@ p {
 #product1 {
 
 
+  grid-template-columns: repeat(5, 2fr);
+   display: grid;
 
+ 
 
-  justify-content: space-between;
 
 
 }
@@ -402,7 +404,7 @@ p {
 
 #product1 .pro .des .star {
   font-size: 22px;
-  color: rgb(243, 208, 10);
+  color: rgb(222, 104, 14);
 
 }
 
@@ -413,21 +415,23 @@ p {
   color: green;
 }
 
-#product1 .pro .des i {
-  width: 40px;
-  height: 40px;
-  line-height: 40px;
-  border-radius: 40px;
+#product1 .pro .des a {
+  text-decoration: none;
+  width: 100px;
+  height: 35px;
+  border-radius: 100px;
   text-align: center;
-  background-color: whites;
-  font-weight: 700;
-  color: green;
+  background-color: rgb(249, 217, 5);
+ font-weight: 500px;
+  font-size: 10px;
+  color:black;
   border: 1px solid whitesmoke;
   position: absolute;
-  bottom: 20px;
+  bottom: 10px;
   right: 10px;
 
 }
+
 
 /*read more banner */
 #banner {
@@ -2252,7 +2256,14 @@ label {
     object-fit: cover;
 
   }
+#product1 {
 
+    
+  grid-template-columns: repeat(2, 5fr);
+  gap: 16px;
+  padding: 20px;
+  justify-items: center;
+  }
 
 
   #product1 .pro-con {
@@ -2428,7 +2439,7 @@ label {
 }
 
 
-@media (max-width:477px) {
+@media (max-width:375px) {
   #mobile li {
     display: flex;
   }
@@ -2890,6 +2901,11 @@ label {
     padding: 10px 10px;
 
   }
+  
+element.style {
+    width: 335px;
+    margin-right: 50px;
+}
 
   #prodetails .single-pro-image {
 
@@ -2910,21 +2926,44 @@ label {
     font-size: 18px;
 
   }
-
-  #product1 .pro {
-    min-width: 190px;
-    height: 40vh;
+#product1 {
+  
+  grid-template-columns: repeat(2, 2fr);
+  gap: 2px;
+  padding: 10px;
+  justify-items: center;
   }
+  #product1 .pro {
+    min-width: 125px;
+    height: 31vh;
+  }
+  #product1 .pro .des
 
+ {
+    line-height: 30%;
+     padding: 0px 0; 
+    height: 0vh; 
+}
+  #product1 .pro-con {
+   padding-left: 100px;
+   padding-right: 100px;
+  }
   #product1 .pro img {
     width: 100%;
-    height: 25vh;
+    height: 15vh;
   }
 
   #product1 .pro .des h5 {
     font-size: 10px;
+    line-height: 10px;
   }
+#product1 .pro .des a
 
+ {
+ 
+  width:80px ;
+  font-size: 2px;
+ }
   #news h1 {
     font-size: 17px;
 

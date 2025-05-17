@@ -2,7 +2,7 @@
 import '../index.css';
 
 import ProductCard from '../Data/ProductCard';
-import MotionSection from '../Data/MotionSection';
+
 import Footer from '../Data/Footer';
 import Header from '../Data/Header';
 
@@ -50,17 +50,7 @@ function Nike() {
 
             </section>
 
-            <MotionSection>
-        <section id="news">
-          <div>
-            <h1>Subscribe To The Newsletter</h1>
-          </div>
-          <div className="sub">
-            <input type="email" placeholder="Enter your email" className="normal" /><br /><br />
-            <button className="normal">Subscribe</button>
-          </div>
-        </section>
-      </MotionSection>
+
 <Footer/>
       
         </div>
