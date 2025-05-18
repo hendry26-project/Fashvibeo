@@ -2,13 +2,17 @@
 import '../index.css';
 import { Link } from 'react-router-dom';
 import ImageGallery from '../Data/ImageGallery';
+import { motion } from 'framer-motion'; 
+import { useNavigate } from 'react-router-dom';
 
 import Footer from '../Data/Footer';
 import Header from '../Data/Header';
 
 
 
+
 function Product3() {
+  const navigate =useNavigate;
   
              /*const [loading, setLoading] = useState(true); // Add loading state*/
 
@@ -105,26 +109,42 @@ const products = [
    
          
 
-                <section id="product1" className="section-p1">
-               
-                   <div className="pro-con" style={{ display: 'contents' }}>
-                        {products.slice(0, 10).map((product) => (
-
-                            <div key={product.id} className="pro" >
-                                <img src={product.image} alt={product.title} height="280px" />
-                                <div className="des">
-                                    <span className="i">{product.brand}</span>
-                                    <h5>{product.title} </h5>
-                                    <div className="star">★★★★★</div>
-                                    <h4>${product.price}</h4>
-                                    <a href={product.cartLink} onClick={(e) => e.stopPropagation()}>
-                                        <p>Add to cart</p>
-                                    </a>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </section>
+               <section id="product1" className="section-p1">
+       
+          {products.slice(0, 10).map((product) => (
+            <motion.div
+             key={product.id}
+        onClick={() => navigate(product.link)}
+        initial={{ opacity: 0, rotateX: 15, rotateY: -15, scale: 0.9 }}
+        animate={{ opacity: 1, rotateX: 0, rotateY: 0, scale: 1 }}
+        transition={{ type: "spring", stiffness: 120, damping: 15, delay: product.id * 0.2 }}
+        className="pro w-[250px] cursor-pointer"
+        
+             
+             
+            >
+              <img
+                src={product.image}
+                alt={`Product ${product.id}`}
+                height="290px"
+                className="rounded-md"
+              />
+              <div className="des">
+                <span className="i">{product.brand}</span>
+                <h5>{product.title}</h5>
+                <div className="star">★★★★★</div>
+                <h4>${product.price}</h4>
+                <Link
+                  href={product.cartLink}
+                  onClick={(e) => e.stopPropagation()}
+                  >
+                <p> Add to cart</p>
+                </Link>
+              </div>
+            </motion.div>
+          ))}
+      
+      </section>
 
 
      

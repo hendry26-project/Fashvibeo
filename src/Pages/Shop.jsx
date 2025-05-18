@@ -21,9 +21,13 @@ function Shop() {
       >
         <section id="page-shop">
           <h2>STAY HOME</h2>
-            
-            <marquee style={{backgroundcolor:"transparent", loop:"-1" ,scrollamount:"5",  width:"30%"}}>
-                save more with coupons & up  to 70% off!</marquee>
+            <motion.div
+ 
+>
+<span className="inline-block px-4"  >
+    Save more with coupons & up to 70% off!
+  </span>
+</motion.div>
           
             
         </section  ><br/><br/></motion.div>

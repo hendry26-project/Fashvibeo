@@ -1146,11 +1146,10 @@ footer .copyright {
   color: rgb(255, 255, 255);
 }
 
-#page-shop marquee {
-  color: rgb(75, 74, 74);
-  font-size: 25px;
-
-}
+#page-shop div {
+  font-size:30px;
+    justify-content:center;
+  }
 
 #page-shopblog {
 
@@ -2680,7 +2679,13 @@ label {
 
 
 
+   
   }
+  
+   
+    #page-shop div {
+  font-size:9px;
+}
 
   #page-shopblog .img1 {
 
