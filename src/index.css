@@ -2509,7 +2509,7 @@ label {
 }
 
 
-@media (max-width: 320px), (max-width: 375px), (max-width: 425px)  {
+@media (max-width: 375px), (max-width: 395px), (max-width: 425px)  {
   #mobile li {
     display: flex;
   }
@@ -2556,7 +2556,9 @@ label {
     width: 135px;
    }
  
-  
+  .swiper-slide{
+    flex-shrink: 1;
+  }
 
   
   .offer {
@@ -2580,7 +2582,9 @@ label {
   .offer p {
     font-size: 18px;
   }
-
+div .swiper-wrapper{
+  width: 200%;
+ }
   #banner {
     height: 11vh;
   }
@@ -3050,10 +3054,7 @@ label {
     height: 0vh;
   }
 
-  #product1 .pro-con {
-    padding-left: 100px;
-    padding-right: 100px;
-  }
+
 
   #product1 .pro img {
     width: 100%;
@@ -3081,5 +3082,6 @@ label {
     height: 20px;
 
   }
+    
 
 }

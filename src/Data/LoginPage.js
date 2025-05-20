@@ -61,7 +61,7 @@ export default function LoginPage({ handleCloseClick }) {
 
       <h2 style={{ fontSize: 20, textAlign: 'center', marginBottom: 20 }}>Sign in with</h2>
 
-    <div className='signin ' style={{
+    <div  style={{
   display: 'flex',
   justifyContent: 'center',
   gap: 10,

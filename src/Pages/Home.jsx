@@ -98,7 +98,7 @@ function Index() {
         loop={true}
          breakpoints={{
     375: {
-      slidesPerView: 1,
+      slidesPerView: 2,
       centeredSlides:true   // iPhone X and similar
     },
     768: {
@@ -211,7 +211,7 @@ function Index() {
         loop={true}
          breakpoints={{
     375: {
-      slidesPerView: 1,
+      slidesPerView: 2,
       centeredSlides:true   // iPhone X and similar
     },
     768: {
