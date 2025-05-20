@@ -70,8 +70,8 @@ function Contact() {
             <h3>Head Office</h3>
             <ul>
               <li><i className="fa fa-map-marker" aria-hidden="true"></i> 56 Glassford Street Glasgow G1 1UL New York</li>
-              <li><i className="fa fa-envelope-square" aria-hidden="true"></i> shop@romofyi.com</li>
-              <li><i className="fa fa-envelope-square" aria-hidden="true"></i> shop@romofyi78.com</li>
+              <li><i className="fa fa-envelope-square" aria-hidden="true"></i> shop@fashvibeo.com</li>
+              <li><i className="fa fa-envelope-square" aria-hidden="true"></i> shop@fashvibeo.com</li>
               <li><i className="fa fa-clock-o" aria-hidden="true"></i> Monday to Saturday :10.00am to 18.00pm</li>
             </ul>
           </div>
