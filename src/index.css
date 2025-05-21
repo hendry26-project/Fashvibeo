@@ -2919,11 +2919,16 @@ div .swiper-wrapper{
     width: 60%;
     height: 350px;
   }
+#contact-details .details ul{
+  padding-left: 10px;
+}
 
-  #contact-details .details li p {
-    font-size: 10px;
+     #contact-details .details li i
 
-  }
+ {
+        padding-right: 2px;
+       padding-bottom: 8px;
+    }
 
   #contact-details.section-p1 {
     padding: 10px 10px;
@@ -3045,7 +3050,7 @@ div .swiper-wrapper{
 
   #product1 .pro {
     min-width: 125px;
-    height: 33vh;
+    height: 35vh;
   }
 
   #product1 .pro .des {
