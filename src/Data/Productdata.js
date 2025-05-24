@@ -7,7 +7,7 @@
       brand: "Hawaiian shirt",
       title: "Floral Hipster",
       price: 78,
-      link: "/product2",
+      link: "/product1/1",
       cartLink: "/cart"
     },
     {
@@ -16,7 +16,7 @@
       brand: "Jeans",
       title: "Highlander",
       price: 88,
-      link: "/product3",
+      link: "/product1/2",
       cartLink: "/cart"
     },
     {
@@ -25,7 +25,7 @@
       brand: "Hawaiian Shirts",
       title: "Button Down Shirts",
       price: 55,
-      link: "/product1",
+      link: "/product1/3",
       cartLink: "/cart"
     },
     {
@@ -34,6 +34,7 @@
       brand: "Jeans",
       title: "Men's Denim Shorts",
       price: 200,
+         link: "/product1/4",
       cartLink: "/cart"
     },
     {
@@ -42,6 +43,7 @@
       brand: "Shorts",
       title: "Combo of 3 Men's Cotton Shorts",
       price: 130,
+         link: "/product1/5",
       cartLink: "/cart"
     },
     {
@@ -50,6 +52,7 @@
       brand: "adidas",
       title: "Plain Cotton Men White Shirt",
       price: 108,
+         link: "/product1/6",
       cartLink: "/cart"
     },
     {
@@ -58,6 +61,7 @@
       brand: "Bag",
       title: " Tarandi Women's  Laptop Bag ",
       price: 109,
+         link: "/product1/7",
       cartLink: "/cart"
     },
     {
@@ -67,6 +71,7 @@
       title: "U.S. Polo Assn. Kids",
       description: "Cotton Horizontal Striped Polo Shirt",
       price: 28,
+         link: "/product1/8",
       cartLink: "/cart"
     },
     {
@@ -76,6 +81,7 @@
       title: "Solvbao Denim Shirt Men",
       description: "Cotton Jeans Shirt",
       price: 68,
+         link: "/product1/9",
       cartLink: "/cart"
     },
    
@@ -86,6 +92,7 @@
       title: "Ladyful Men's Corduroy Shirt",
       description: "Long Sleeve Casual Blouse",
       price: 85,
+      link: "/product1/10",
       cartLink: "/cart"
     },
     {
@@ -94,6 +101,8 @@
       brand: "JINGPI",
       title: "Brown Leather Men Formal Shoes",
       price: 55,
+         link: "/product1/11",
+
       cartLink: "/cart"
     },
     {
@@ -102,6 +111,7 @@
       brand: "Sylvi",
       title: "Iconic Brown",
       price: 50,
+         link: "/product1/12",
       cartLink: "/cart"
     }
   ];

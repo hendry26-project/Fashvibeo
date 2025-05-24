@@ -183,26 +183,26 @@ body {
 }
 
 .login-container {
-  position: relative;
-  max-width: 700px;
-  
-  margin: 0 auto;
-  padding: 60px;
-  background: #fff;
-  border-radius: 4px;
+     
+     margin: auto; 
+    padding: 40px; 
+    position: 'relative';
+     background-color: #fff; 
+    border-Radius: 8px; 
 }
-.login-container form  {
-  width: 300px;
-}
+
 .login {
   position: absolute;
-  top: 100%;
-  right: 0;
+  top: 70%;
+  right: 30px;
+  
   background: #ffffff;
   box-Shadow: 0 2px 8px rgba(223, 220, 220, 0.946);
   z-Index: 999;
-  padding: 16px
+  padding: 10px;
+  width: 250%;
 }
+
 
 
 #mobile {
@@ -452,6 +452,7 @@ p {
   position: absolute;
   bottom: 10px;
   right: 10px;
+
 
 }
 
@@ -2233,25 +2234,13 @@ label {
 
   }
 
-  
-.login-container form  {
-  width: 300px;
-}
-
-  
-  .login {
-  align-self: start;
-  padding: 16px;
-  position: fixed;
-  top: 70px;           
-  left: 380px;
-  width: 38%;
-  height: 33%;
- 
-  
-  
-  z-index: 1000    
+  .login{
+    right: 130px;
+    width: 300px;
   }
+
+
+
 #lg-bag  .hide {
     display: none;
   }
@@ -2530,24 +2519,19 @@ label {
 
 
   }
-  .login-container form  {
-  width: 200px;
+   .login{
+    top: auto;
+    right: 160px;
+    width: 220px;
+    
+  }
+ .login-container {
+    
+    padding: 10px;
+    
+    
 }
 
-  
-  .login {
-  align-self: start;
-  padding: 16px;
-  position: fixed;
-  top: 70px;           
-  left: 70px;
-  width: 50%;
-  height: 30%;
- 
-  
-  
-  z-index: 1000    
-  }
 
   #lg-bag  .hide {
     display: none;

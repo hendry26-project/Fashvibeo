@@ -63,7 +63,7 @@ function Shop2() {
   <section id="product1" className="section-p1 px-4">
    
   
-      {Products.slice(0, 10).map((product1) => (
+      {Products.slice(0, 12).map((product1) => (
         <motion.div
           key={product1.id}
           onClick={() => navigate(product1.link)}

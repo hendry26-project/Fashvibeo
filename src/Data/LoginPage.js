@@ -44,7 +44,7 @@ export default function LoginPage({ handleCloseClick }) {
   };
 
   return (
-    <div className="login-container" style={{ maxWidth: 400, margin: 'auto', padding: 20, position: 'relative', backgroundColor: '#fff', borderRadius: 8 }}>
+    <div className="login-container" >
       <div
         onClick={handleCloseClick}
         style={{
