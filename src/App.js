@@ -9,7 +9,6 @@ import Cart from './Pages/Cart'
 import Shop2 from './Pages/Shop2'
 import CombinedProductPage from './Pages/Product1'
 
-import Nike from './Pages/Nike'
 
 function App() {
  
@@ -20,12 +19,12 @@ function App() {
    <BrowserRouter>
    <Routes>
  
-
+      <Route path="/shop/:slug?" element={<Shop />} />
     <Route path='/' element={<Index />} />
     <Route path='/Shop' element={<Shop/>}/> 
     <Route path='/Shop2' element={<Shop2/>}/>
     <Route path="/product1/:id" element={<CombinedProductPage />} />
-     <Route path='Nike' element={<Nike/>} />
+     
      <Route path='/Blog' element={<Blog/>}/>
      <Route path='/About' element={<About/>}/>
      <Route path='/Contact' element={<Contact/>}/>

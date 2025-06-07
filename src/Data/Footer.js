@@ -3,6 +3,8 @@ import MotionSection from "./MotionSection";
 const Footer = () => {
   return (
     <MotionSection>
+
+
       <section id="news">
         <div>
           <h1>Subscribe To The Newsletter</h1>

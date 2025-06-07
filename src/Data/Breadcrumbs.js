@@ -1,29 +1,62 @@
-// Breadcrumbs.jsx
-import { Link, useLocation } from 'react-router-dom';
+import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
 
 function Breadcrumbs({ product }) {
-  const location = useLocation();
+  useEffect(() => {
+    console.log("Breadcrumbs received product:", product);
+  }, [product]);
 
-  const breadcrumbs = [
-    { name: 'Home', path: '/' },
-   
-    {
-      name: product?.category || 'Category',
-      path: `/category/men/${(product?.category || '').toLowerCase().replace(/\s+/g, '-')}`
-    },
-    { name: product?.title || 'Product', path: location.pathname }
-  ];
+  if (!product) return null;
+
+  const {
+    gender = "",
+    category = "",
+    title = ""
+  } = product;
+
+  const capitalize = (s) =>
+    s ? s.charAt(0).toUpperCase() + s.slice(1).toLowerCase() : "";
+
+  const genderCap = capitalize(gender.trim());
+  const categoryCap = category
+    .trim()
+    .split("-")                     // Split slug like "blouses-shirts"
+    .map(capitalize)                // Capitalize each part
+    .join(" ");                     // Join as "Blouses Shirts"
+
+  const categorySlug = category.trim().toLowerCase();
 
   return (
-    <nav >
-      {breadcrumbs.map((crumb, index) => (
-        <span key={index}   >
-          <Link style={{textDecoration:'none' , color:'black',paddingRight:'5px',paddingLeft:'5px'}} to={crumb.path} >
-            {crumb.name}
+    <nav style={{ fontSize: "14px", margin: "15px 0" }}>
+      <Link to="/" style={{ textDecoration: "none", color: "#555" }}>
+        Shop
+      </Link>
+
+      {genderCap && (
+        <>
+          <span style={{ margin: "0 6px" }}>›</span>
+          <span style={{ color: "#555" }}>{genderCap}</span>
+        </>
+      )}
+
+      {categoryCap && (
+        <>
+          <span style={{ margin: "0 6px" }}>›</span>
+          <Link
+            to={`/shop/${categorySlug}`}
+            style={{ textDecoration: "none", color: "#555" }}
+          >
+            {categoryCap}
           </Link>
-          {index < breadcrumbs.length - 1 && <span className="mx-1">›</span>}
-        </span>
-      ))}
+        </>
+      )}
+
+      {title && (
+        <>
+          <span style={{ margin: "0 6px" }}>›</span>
+          <span style={{ color: "black", fontWeight: "600" }}>{title}</span>
+        </>
+      )}
     </nav>
   );
 }

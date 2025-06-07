@@ -1,20 +1,19 @@
 import { useEffect, useState } from 'react';
+import { brand } from '../Data/Productdata';
 
 import {  motion } from 'framer-motion';
 import { Link, useNavigate } from 'react-router-dom';
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
-
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-
-
-import { Product1s, Shoes,Products } from '../Data/Productdata';
+import {  Shoes,Products,Shoe } from '../Data/Productdata';
 import MotionSection from '../Data/MotionSection';
 import Footer from '../Data/Footer';
 import '../index.css';
 import Header from '../Data/Header';
+
 
 const MotionWrapper = ({ children, initial, whileInView, transition }) => (
   <motion.section
@@ -79,38 +78,39 @@ function Index() {
         </section>
       </MotionSection>
 
-      <MotionSection>
-        <div className="Featured">
-          <h2>Featured Products</h2>
-          <p>Summer Collection New Modern Design</p>
+
+        <div className="Featured1">
+          <h3  className='featured-product'>Featured Products</h3>
+          <h1 className='summer-collection'>Summer Collection New Modern Design</h1>
         </div>
-      </MotionSection>
+     
 
    <section id="product1" style={{ display: "flex" }} className="section-p1">
         <Swiper
           modules={[Navigation, Pagination, Autoplay]}
           spaceBetween={10}
-          slidesPerView={4}
+          slidesPerView={6}
+          autoplay={{delay:3000,disableOnInteraction:false}}
           centeredSlides={true}
           navigation
           pagination={{ clickable: true }}
-          autoplay={{ delay: 3000, disableOnInteraction: false }}
+          
           loop={true}
           breakpoints={{
-            375: { slidesPerView: 2, centeredSlides: true },
-            768: { slidesPerView: 2, centeredSlides: false },
-            1024: { slidesPerView: 4, centeredSlides: false },
+            375: { slidesPerView: 3, centeredSlides: true },
+            768: { slidesPerView: 3, centeredSlides: true },
+            1024: { slidesPerView: 6, centeredSlides: false },
           }}
           className="pro-con"
         >
-          {Product1s.map((product1) => (
+          {Products.slice(0,15).map((product1) => (
             <SwiperSlide key={product1.id}>
               <motion.div
                 onClick={() => navigate(product1.link)}
                 initial={{ opacity: 0, rotateX: 15, rotateY: -15, scale: 0.9 }}
                 animate={{ opacity: 1, rotateX: 0, rotateY: 0, scale: 1 }}
-                transition={{ type: "spring", stiffness: 120, damping: 15, delay: product1.id * 0.2 }}
-                 className="pro w-[250px] cursor-pointer"
+                transition={{ type: "spring", stiffness: 120, damping: 15, /*delay: product1.id * 0.2 */}}
+                 className="pro "
                 style={{
                   borderRadius: "15px",
                   color: "#00f0ff",
@@ -122,16 +122,68 @@ function Index() {
                   src={product1.image}
                   alt={product1.title}
                   height="290px"
-                  style={{ borderRadius: "12px", marginBottom: "12px" }}
+                  style={{ marginBottom: "12px" }}
                 />
                 <div className="des">
-                  <span className="i">{product1.brand}</span>
+                  <span className="i"><b>{product1.brand}</b></span>
                   <h5>{product1.title}</h5>
                   <div className="star">★★★★★</div>
-                  <h4>${product1.price}</h4>
-                  <Link to={"/cart"} onClick={(e) => e.stopPropagation()}>
-                    <p >Add to cart</p>
+                 <div className='pric'>
+  <h4 className='price'>₹{product1.price}</h4>
+
+  {product1.Reduceprice && (
+    parseFloat(product1.Reduceprice.replace(/,/g, '')) > parseFloat(product1.price.replace(/,/g, '')) && (
+      <>
+        <h4 className='mrp'>M.R.P:</h4>
+        <h4 className='mrp'>
+          <del>₹{product1.Reduceprice}</del>
+        </h4>
+        <h4 className='red'>
+          (
+            {Math.round(
+              ((parseFloat(product1.Reduceprice.replace(/,/g, '')) - parseFloat(product1.price.replace(/,/g, '')))
+              / parseFloat(product1.Reduceprice.replace(/,/g, ''))) * 100
+            )}% off)
+        </h4>
+      </>
+    )
+  )}
+</div>
+
+                    
+                     
+                     
+                   
+{(product1.save || product1.coupon) && (
+  <div style={{ 
+    display: 'flex', 
+    gap: '8px', 
+    alignItems: 'center', 
+    paddingBottom: '10px', 
+    marginTop: '5px', 
+    flexWrap: 'wrap' 
+  }}>
+    {product1.save && (
+      <div className='save'
+       
+      >
+        {product1.save}
+      </div>
+    )}
+    {product1.coupon && (
+      <div className='coupon'>
+        {product1.coupon}
+      </div>
+    )}
+  </div>
+)}
+ <Link to={"/cart"} onClick={(e) => e.stopPropagation()}>
+                    Add to cart
                   </Link>
+
+
+
+                 
                 </div>
               </motion.div>
             </SwiperSlide>
@@ -177,92 +229,125 @@ function Index() {
         >
           <section id="banner4">
             <div className="banner-boxnew">
-              <h2><strong>New Men's Clothing<br />Collection 2025</strong></h2>
-              <h3>Discover new suits, ties, shoes,<br/> and shirts from our designers.</h3>
+              <h2><strong>New Collection 2025</strong></h2>
+              <h3>Discover new suits,watches,footwear,belts, ties, shoes,and shirts from our shop.</h3>
               <button className="shopnow">Shop now</button>
             </div>
           </section>
         </motion.div>
-      </section>
+      </section><br/><br/>
 
-      <MotionSection>
-        <div className="Featured">
-          <h2>New Arrival</h2>
-          <p>Summer Collection New Modern Design</p>
+    
+        <div className="Featured1">
+          <h2  className='featured-product'>New Arrival</h2>
+          <h1 className='summer-collection'>Summer Collection New Modern Design</h1>
         </div>
-      </MotionSection>
+
 
    <section id="product1" style={{display:'flex'}} className="section-p1">
       <Swiper
-        modules={[Navigation, Pagination, Autoplay]}
-        spaceBetween={10}
-        slidesPerView={4}
-        centeredSlides={true}
-        navigation
-        pagination={{ clickable: true }}
-        autoplay={{ delay: 3000, disableOnInteraction: false }}
-        loop={true}
-         breakpoints={{
-    375: {
-      slidesPerView: 2,
-      centeredSlides:true   // iPhone X and similar
-    },
-    768: {
-      slidesPerView: 2,
-      centeredSlides:false   // tablets like iPad
-    },
-    1024: {
-      slidesPerView: 4, 
-      centeredSlides:false  // Windows desktop and larger screens
-    },
-  }}
-      className="pro-con "  
+          modules={[Navigation, Pagination, Autoplay]}
+          spaceBetween={10}
+          slidesPerView={6}
+          autoplay={{delay:3000,disableOnInteraction:false}}
+          centeredSlides={true}
+          navigation
+          pagination={{ clickable: true }}
+          
+          loop={true}
+          breakpoints={{
+            375: { slidesPerView: 3, centeredSlides: true },
+            768: { slidesPerView: 3, centeredSlides: true },
+            1024: { slidesPerView: 6, centeredSlides: false },
+          }}
+          className="pro-con"
+        >
+          {Products.slice(16,32).map((product1) => (
+            <SwiperSlide key={product1.id}>
+              <motion.div
+                onClick={() => navigate(product1.link)}
+                initial={{ opacity: 0, rotateX: 15, rotateY: -15, scale: 0.9 }}
+                animate={{ opacity: 1, rotateX: 0, rotateY: 0, scale: 1 }}
+                transition={{ type: "spring", stiffness: 120, damping: 15, /*delay: product1.id * 0.2 */}}
+                 className="pro "
+                style={{
+                  borderRadius: "15px",
+                  color: "#00f0ff",
+                  padding: "10px",
+                  perspective: 800,
+                }}
+              >
+                <img
+                  src={product1.image}
+                  alt={product1.title}
+                  height="290px"
+                  style={{ marginBottom: "12px" }}
+                />
+                <div className="des">
+                  <span className="i"><b>{product1.brand}</b></span>
+                  <h5>{product1.title}</h5>
+                  <div className="star">★★★★★</div>
+                    <div className='pric'>
+  <h4 className='price'>₹{product1.price}</h4>
+
+  {product1.Reduceprice && (
+    parseFloat(product1.Reduceprice.replace(/,/g, '')) > parseFloat(product1.price.replace(/,/g, '')) && (
+      <>
+        <h4 className='mrp'>M.R.P:</h4>
+        <h4 className='mrp'>
+          <del>₹{product1.Reduceprice}</del>
+        </h4>
+        <h4 className='red'>
+          (
+            {Math.round(
+              ((parseFloat(product1.Reduceprice.replace(/,/g, '')) - parseFloat(product1.price.replace(/,/g, '')))
+              / parseFloat(product1.Reduceprice.replace(/,/g, ''))) * 100
+            )}% off)
+        </h4>
+      </>
+    )
+  )}
+</div>
+
+                    
+                     
+                     
+                   
+{(product1.save || product1.coupon) && (
+  <div style={{ 
+    display: 'flex', 
+    gap: '8px', 
+    alignItems: 'center', 
+    paddingBottom: '10px', 
+    marginTop: '5px', 
+    flexWrap: 'wrap' 
+  }}>
+    {product1.save && (
+      <div className='save'
+       
       >
-        {Products.map((product1) => (
-          <SwiperSlide key={product1.id}>
-    <motion.div
-      onClick={() => navigate(product1.link)}
-      initial={{ opacity: 0, rotateX: 15, rotateY: -15, scale: 0.9 }}
-      animate={{ opacity: 1, rotateX: 0, rotateY: 0, scale: 1 }}
-      transition={{ type: "spring", stiffness: 120, damping: 15, delay: product1.id * 0.2 }}
-      /* whileHover={{
-        scale: 1.08,
-        rotateX: [0, 5, -5, 0],
-        rotateY: [0, -5, 5, 0],
-        transition: {
-          duration: 1,
-          repeat: Infinity,
-          repeatType: "mirror",
-          ease: "easeInOut",
-        },
-      }} */
-      className="pro w-[250px] cursor-pointer"
-      style={{
-        borderRadius: "15px",
-        color: "#00f0ff",
-        padding: "10px",
-        perspective: 800,
-      }}
-    >
-      <img
-        src={product1.image}
-        alt={product1.title}
-        height="290px"
-        style={{ borderRadius: "12px", marginBottom: "12px" }}
-      />
-      <div className="des">
-        <span className="i">{product1.brand}</span>
-        <h5>{product1.title}</h5>
-        <div className="star">★★★★★</div>
-        <h4>${product1.price}</h4>
-        <Link href={product1.cartLink} onClick={(e) => e.stopPropagation()}>
-          <p>Add to cart</p>
-        </Link>
+        {product1.save}
       </div>
-    </motion.div>
-  </SwiperSlide>
-        ))}
-      </Swiper>
+    )}
+    {product1.coupon && (
+      <div className='coupon'>
+        {product1.coupon}
+      </div>
+    )}
+  </div>
+)}
+ <Link to={"/cart"} onClick={(e) => e.stopPropagation()}>
+                    Add to cart
+                  </Link>
+
+
+
+                 
+                </div>
+              </motion.div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
     </section>
 
       <nav id="nav">
@@ -278,7 +363,7 @@ function Index() {
           </div>
         </div>
         <div className="navBottom">
-          {Shoes.map((shoe, index) => (
+          {Shoe.map((shoe, index) => (
             <h3
               key={index}
               className={`menuItem ${currentIndex === index ? 'active' : ''}`}
@@ -296,12 +381,12 @@ function Index() {
           className="sliderWrapper"
           style={{
             display: 'flex',
-            width: `${Shoes.length * 100}vw`,
+            width: `${Shoe.length * 100}vw`,
             transform: `translateX(-${currentIndex * 100}vw)`,
             transition: 'transform 0.5s ease',
           }}
         >
-          {Shoes.map((shoe, index) => (
+          {Shoe.map((shoe, index) => (
             <div
               key={index}
               className="sliderItem"
@@ -321,12 +406,15 @@ function Index() {
               </h1>
               <h2 className="sliderPrice"><del>{shoe.Reduceprice}</del></h2>
               <h2 className="sliderPrice2">{shoe.price}</h2>
-              <Link to='/Nike'><button className="buyButton">BUY NOW!</button></Link>
+              <Link to="/footwear/sneakers">
+                <button className="buyButton">BUY NOW!</button>
+              </Link>
+
             </div>
           ))}
         </div>
       </div>
-
+ 
       <section id="sm-banner" className="section-p1">
         <motion.div
           initial={{ opacity: 0, x: -100 }}
@@ -355,6 +443,84 @@ function Index() {
         </motion.div>
       </section>
 
+
+
+ <h1 className='featured-product'  >
+  Top Brands:
+ 
+</h1>
+
+
+         <section id="product2" style={{display:'flex'}} className='bra' >
+      <Swiper
+        modules={[Navigation, Pagination, Autoplay]}
+        spaceBetween={10}
+         autoplay={{disableOnInteraction:false}}
+        slidesPerView={8}
+       
+        navigation
+        
+        
+        loop={true}
+         breakpoints={{
+    375: {
+      slidesPerView: 6,
+      centeredSlides:true   // iPhone X and similar
+    },
+    768: {
+      slidesPerView:6,
+      centeredSlides:true   // tablets like iPad
+    },
+    1024: {
+      slidesPerView: 8, 
+      centeredSlides:false  // Windows desktop and larger screens
+    },
+  }}
+      className="brand "  
+      >
+    
+         {brand.map((product1) => (
+            <SwiperSlide key={product1.id}>
+              <motion.div
+                onClick={() => navigate(product1.link)}
+                initial={{ opacity: 0, rotateX: 15, rotateY: -15, scale: 0.9 }}
+                animate={{ opacity: 1, rotateX: 0, rotateY: 0, scale: 1 }}
+                transition={{ type: "spring", stiffness: 120, damping: 15, /*delay: product1.id * 0.2 */}}
+                 
+                style={{
+                  borderRadius: "15px",
+                  color: "#00f0ff",
+                  padding: "10px",
+                  perspective: 800,
+                }}
+              >
+                
+ 
+                <img
+                  src={product1.image}
+              className='bre'
+                 
+                />
+               
+                 <div>
+                
+
+ 
+
+
+
+ 
+
+
+
+
+                
+                </div>
+              </motion.div>
+            </SwiperSlide>
+          ))}
+      </Swiper>
+    </section>
       <Footer />
     </div>
   );
