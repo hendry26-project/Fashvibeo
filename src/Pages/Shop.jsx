@@ -228,7 +228,7 @@ function Shop() {
                 <img
                   src={product1.image}
                   className='bor'
-
+                alt=""
                 />
 
                 <div>
@@ -301,6 +301,7 @@ function Shop() {
                 <img
                   src={product1.image}
                   className='bor'
+                  alt=''
 
                 />
 
@@ -366,6 +367,7 @@ function Shop() {
                     <img
                       src={product1.image}
                       className='bir'
+                      alt=''
 
 
 
@@ -439,6 +441,7 @@ function Shop() {
                     <img
                       src={product1.image}
                       className='bir'
+                      alt=''
 
 
 
@@ -511,6 +514,7 @@ function Shop() {
                <img
                   src={product1.image}
                   className='bor'
+                  alt=''
 
 
                 />

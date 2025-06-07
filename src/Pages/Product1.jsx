@@ -13,7 +13,7 @@ import { Products } from '../Data/Productdata';
 import 'swiper/css'; // core Swiper CSS
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import { brand } from '../Data/Productdata';
+
 
 
   
@@ -1220,7 +1220,7 @@ const allProducts = [
     ],
 
     relatedProducts: [
-   ,12,18
+   12,18
 ]
  
  

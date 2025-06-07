@@ -96,12 +96,12 @@ const CategoryBar = ({ onCategorySelect }) => {
             {cat.label}
           </div>
           {openIndex === idx && (
-            <ul className="ulnav" role="list">
+            <ul className="ulnav" >
               {cat.items.map((item, itemIdx) => (
                 <li
                   key={item.label}
                   className="linav"
-                  role="listitem"
+                 
                   tabIndex={0}
                   onClick={() => {
                     if (!item.slug) {

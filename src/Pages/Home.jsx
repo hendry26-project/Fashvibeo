@@ -8,7 +8,7 @@ import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import {  Shoes,Products,Shoe } from '../Data/Productdata';
+import { Products,Shoe } from '../Data/Productdata';
 import MotionSection from '../Data/MotionSection';
 import Footer from '../Data/Footer';
 import '../index.css';
@@ -499,6 +499,7 @@ function Index() {
                 <img
                   src={product1.image}
               className='bre'
+              alt=''
                  
                 />
                
