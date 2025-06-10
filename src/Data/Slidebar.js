@@ -53,7 +53,7 @@ const categories = [
   {
     label: 'Sale',
     items: [
-      { label: 'Up to 30% Off', slug: '30-off' },
+      { label: 'Up to 20% Off', slug: 'sneakers' },
       { label: 'Up to 50% Off', slug: '50-off' },
       { label: 'Clearance Items', slug: 'clearance' },
     ],
@@ -63,7 +63,7 @@ const categories = [
     items: [
       { label: "Men's New In", gender: 'Men', slug: 'mens-new-in' },
       { label: "Women's New In", gender: 'Women', slug: 'womens-new-in' },
-      { label: 'Latest Shoes', slug: 'latest-shoes' },
+      { label: 'Latest Shoes', slug: 'sneakers' },
     ],
   },
 ];

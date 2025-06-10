@@ -9,10 +9,12 @@ import Footer from '../Data/Footer';
 import Header from '../Data/Header';
 import { motion } from 'framer-motion';
 import CategoryBar from '../Data/Slidebar';
+import { useCart } from '../Data/CartContext';
 
 function Shop() {
   const navigate = useNavigate();
   const { slug } = useParams();
+  const {addToCart}=useCart();
 
   const [selectedCategory, setSelectedCategory] = useState(slug || "");
   const [selectedGender, setSelectedGender] = useState("");
@@ -129,17 +131,23 @@ function Shop() {
 
                         <div className="pric">
                           <h4 className="price">₹{product1.price}</h4>
-                          {product1.Reduceprice && product1.Reduceprice > product1.price && (
-                            <>
-                              <h4 className="mrp">M.R.P:</h4>
-                              <h4 className="mrp">
-                                <del>₹{product1.Reduceprice}</del>
-                              </h4>
-                              <h4 className="red">
-                                ({Math.round(((product1.Reduceprice - product1.price) / product1.Reduceprice) * 100)}% off)
-                              </h4>
-                            </>
-                          )}
+                         {product1.Reduceprice && (
+    parseFloat(product1.Reduceprice.replace(/,/g, '')) > parseFloat(product1.price.replace(/,/g, '')) && (
+      <>
+        <h4 className='mrp'>M.R.P:</h4>
+        <h4 className='mrp'>
+          <del>₹{product1.Reduceprice}</del>
+        </h4>
+        <h4 className='red'>
+          (
+            {Math.round(
+              ((parseFloat(product1.Reduceprice.replace(/,/g, '')) - parseFloat(product1.price.replace(/,/g, '')))
+              / parseFloat(product1.Reduceprice.replace(/,/g, ''))) * 100
+            )}% off)
+        </h4>
+      </>
+    )
+  )}
                         </div>
 
                         {(product1.save || product1.coupon) && (
@@ -159,10 +167,13 @@ function Shop() {
                             )}
                           </div>
                         )}
-                        <Link to="/cart" onClick={(e) => e.stopPropagation()}>
-                          Add to cart
-                        </Link>
-                      </div>
+                        <Link   onClick={(e) => {
+    e.preventDefault();
+    e.stopPropagation(); 
+    addToCart(product1);}}>Add to cart</Link>
+                      
+      
+                </div>
                     </motion.div>
                   ))
                 ) : (

@@ -4,7 +4,7 @@ import MotionSection from "./MotionSection";
 import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
-
+import { useCart } from './CartContext';
 // Import your LoginPage component
 import LoginPage from './LoginPage';
 
@@ -15,7 +15,9 @@ const Header = () => {
 
   // Toggle state for the Login dropdown
   const [showLogin, setShowLogin] = useState(false);
-
+   const { cartItems } = useCart();
+   const totalQuantity = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+  
   const handleBarClick = () => setIsActive(true);
   const handleCloseClick = () => setIsActive(false);
   const toggleLogin = () => setShowLogin(prev => !prev);
@@ -121,13 +123,20 @@ const Header = () => {
               id="lg-bag"
               style={{ display: 'flex', alignItems: 'center', gap: '12px', position: 'relative' }}
             >
-              <Link to="/Cart"  className='hide'>
-                <img
-                  src="/assets/img/cart-shopping-solid.svg"
-                  style={{ height: 20, width: 30 }}
-                  alt="Cart"
-                />
-              </Link>
+             <Link
+          to="/Cart"
+          className="hide"
+                style={{ position: 'relative' }}
+        >
+          <img
+            src="/assets/img/cart-shopping-solid.svg"
+            style={{ height: 20, width: 30 }}
+            alt="Cart"
+          />
+           {totalQuantity > 0 && (
+          <span className="cart-badge">{totalQuantity}</span>
+        )}
+        </Link>
 
               <button className='hide'
                 onClick={toggleLogin}
@@ -142,6 +151,7 @@ const Header = () => {
                   alt="Login"
                   style={{ height: 45, width: 50 }}
                 />
+                 
               </button>
 
               {/* Nav-close (hamburger → ×) */}
@@ -164,16 +174,16 @@ const Header = () => {
 
         {/* Mobile nav */}
         <div id="mobile">
-          <ul style={{ display: 'flex', alignItems: 'center', gap: '1px' }}>
-            <li>
-              <Link to="/Cart">
-                <img
-                  src="/assets/img/cart-shopping-solid.svg"
-                  height="20"
-                  width="30"
-                  alt="Cart"
-                />
-              </Link>
+          <ul >
+            <li  >
+               <img   className='myimg'
+            src="/assets/img/cart-shopping-solid.svg"
+            style={{ height: 20, width: 30 }}
+            alt="Cart"
+          />
+           {totalQuantity > 0 && (
+          <span className="cart-badge">{totalQuantity}</span>
+        )}
             </li>
             <li>
               <button

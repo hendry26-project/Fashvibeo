@@ -203,20 +203,24 @@ body {
   width: 250%;
 }
 
+.cart-badge{border-radius: 50%;
+  color: white;
+  background-color: red;
+  padding: 4px;
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  width: 4px;
+  font-size: 15px;
+}
 
-
-#mobile {
+ #mobile {
+  
+  
   display: none;
-  align-items: center;
+
+  
+  }
 
 
-}
-
-#mobile li {
-  list-style: none;
-
-
-}
 
 #close {
   display: none;
@@ -2405,58 +2409,54 @@ label {
 }
 
 .cat {
-  font-weight: 600;
-  font-size: 18px;
-  width: 100px;
-
-  cursor: pointer;
-  padding: 10px 10px;
-  border-radius: 0.375rem;
   color: white;
-  white-space: nowrap;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-weight: bold;
 
 }
 
 .navca {
+ flex: 0 0 auto;
   position: relative;
-  padding: 5px 5px 5px 5px;
-
 
 }
 
 .nave {
-  width: 205.cm;
-  background: rgb(55, 54, 54);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  padding: 0.5rem 1rem;
   display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  gap: 5rem;
+  overflow:visible;
+  white-space: nowrap;
+  background-color: #333;
+  padding: 10px 0;
+  scroll-behavior: smooth;
+  justify-content:space-evenly;
+  gap: 1rem;
+  z-index: 10;
   position: relative;
-  z-index: 100;
+}
+.nave::-webkit-scrollbar {
+  display: none; /* Hide scrollbar */
 }
 
 .ulnav {
-  position: absolute;
+ position: absolute;
   top: 100%;
-  width: 100%;
   left: 0;
+  border-radius: 10px;
   background-color: white;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  border-radius: 0.5rem;
-  padding: 0.5rem 1rem;
-  list-style: none;
-  margin: 0;
-  z-index: 999;
+  padding: 10px;
+  border: 1px solid #ccc;
+  z-index: 1000;
+  min-width: 150px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  display: block;
 }
 
 .linav {
-  font-size: 0.875rem;
-  padding: 0.25rem 0;
-  cursor: pointer;
-  color: #1f2937;
+  list-style: none;
+  padding: 5px 10px;
   background-color: #f3f4f6;
+  
 }
 
 .bra {
@@ -2643,13 +2643,15 @@ h1{
     padding-left: 0px;
     padding-right: 0px;
   }
+#mobile ul{
+  
+   gap: 10px;
+   padding: 5px;
+  display: flex;
 
-  #mobile {
-    display: flex;
-    align-items: center;
-
-
+  list-style: none;
   }
+  #mobile{display: flex;justify-content: space-between;}
 
   #mobile i {
     color: black;
@@ -2965,10 +2967,19 @@ h1{
 @media (max-width: 375px),
 (max-width: 395px),
 (max-width: 425px) {
-  #mobile li {
-    display: flex;
-  }
+  
+  #mobile ul{
+  align-items: center;
+   gap: 1px;
+  display: flex;
 
+  list-style: none;
+  }
+#navbar
+{
+  right: -350px;
+}
+ .hide{display: none;}
   .loader img {
 
     width: 120px;
@@ -3595,13 +3606,21 @@ h1{
   }
 
   #news h1 {
-    font-size: 17px;
-
+    font-size: 13px;
+  
   }
+ 
+
+  
+   #news div{
+    padding-right: 5px;
+     text-align: center;
+ 
+   }
 
   #news .sub input {
-    width: 160px;
-    height: 20px;
+    width: 150px;
+    height: 10px;
 
   }
 
@@ -3782,4 +3801,38 @@ h1{
   font-size: 10px;
 }
 .man{ font-size: 10px; }
+.sub ::placeholder{
+  font-size: 14px;
+}
+#news .sub button {
+ 
+ 
+  padding: 15px 15px;
+  font-size: 12px;
+}
+#news .sub{
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+.cart-badge{border-radius: 50%;
+   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+ font-size: 15px;
+  padding: 2px;
+
+  width: 5px;
+
+}
+.Featured{padding: 0;}
+.Featured p {padding-left: 10px;}
+
+.ulnav{
+  min-width: 0px;
+  
+}
+.linav {
+        font-size: 0.600rem;
+        padding: 0.20rem 0px;
+        
+        
+      }
 }

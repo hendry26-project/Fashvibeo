@@ -402,11 +402,12 @@ export const Products = [
       height: '290px',
         brand: 'FLYING BERRY ',
          category: 'Bags',
+      
     categorySlug: 'bags',
         save:"Save ₹30",
         coupon:"with coupon (limited sizes/colours)",
-       
-            type: '',
+         gender:"Women",
+            type: 'bag',
               title: 'FLYING BERRY Womens Hand bag COMBO PACK (PREMIUM EDITION)',
                 price: '2,488',
                   link: '/product1/22',

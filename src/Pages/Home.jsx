@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { brand } from '../Data/Productdata';
-
+import { useCart } from '../Data/CartContext';
 import {  motion } from 'framer-motion';
 import { Link, useNavigate } from 'react-router-dom';
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -15,6 +15,7 @@ import '../index.css';
 import Header from '../Data/Header';
 
 
+
 const MotionWrapper = ({ children, initial, whileInView, transition }) => (
   <motion.section
     initial={initial}
@@ -27,10 +28,16 @@ const MotionWrapper = ({ children, initial, whileInView, transition }) => (
 
 
 function Index() {
+  
   const [currentIndex, setCurrentIndex] = useState(0);
   const navigate = useNavigate();
+
+ 
   const [bgIndex, setBgIndex] = useState(0);
 
+    const { addToCart } = useCart();
+
+  
  useEffect(() => {
     const interval = setInterval(() => {
       setBgIndex((prevIndex) => (prevIndex + 1) % 3);
@@ -177,9 +184,19 @@ function Index() {
     )}
   </div>
 )}
- <Link to={"/cart"} onClick={(e) => e.stopPropagation()}>
-                    Add to cart
-                  </Link>
+<Link
+  to="#"
+  
+  onClick={(e) => {
+    e.preventDefault();
+    e.stopPropagation(); 
+    addToCart(product1);
+    
+  }}
+>
+  Add to cart
+</Link>
+
 
 
 
@@ -336,10 +353,19 @@ function Index() {
     )}
   </div>
 )}
- <Link to={"/cart"} onClick={(e) => e.stopPropagation()}>
-                    Add to cart
-                  </Link>
+<Link
+  to="#"
 
+  onClick={(e) => {
+    e.preventDefault();
+   
+    e.stopPropagation(); 
+    addToCart(product1);
+   
+  }}
+>
+  Add to cart
+</Link>
 
 
                  
@@ -437,7 +463,7 @@ function Index() {
           <div className="banner-box2">
             <h4>spring/summer</h4>
             <h1>upcoming season</h1>
-            <span>The best classic dress is on sale at Fashvibeo</span>
+            <span>The best classic dress,accessories,shoes is on sale at Fashvibeo</span>
             <button className="white">Collection</button>
           </div>
         </motion.div>

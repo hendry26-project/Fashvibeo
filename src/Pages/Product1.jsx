@@ -13,6 +13,7 @@ import { Products } from '../Data/Productdata';
 import 'swiper/css'; // core Swiper CSS
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import { useCart } from '../Data/CartContext';
 
 
 
@@ -20,13 +21,14 @@ import 'swiper/css/pagination';
 
 
 const allProducts = [
+  
   {
     id: 1,
     category: "Blouses & Shirts",
     brand:"HOTOUCH",
     title: "HOTOUCH Womens Hawaiian Shirts Button Up Casual Floral Tropical Shirt Summer Beach Shirt ",
     price: 700,
-    mainImage: "/assets/img/HSS152-Floral-Hipster.jpg",
+    image: "/assets/img/HSS152-Floral-Hipster.jpg",
     thumbnails: ["/assets/img/HSS152-Floral-Hipster.jpg", "/assets/img/a2.jpg", "/assets/img/a1.jpg", "/assets/img/a4.jpg", "/assets/img/a7.jpg"],
     sizes: ['Small', 'Large', 'Medium', 'XL', 'XXL'],
     new: 'Material composition', newtype: '95% Polyester, 5% Spandex',
@@ -51,7 +53,7 @@ const allProducts = [
     brand:'HIGHLANDER',
     title: " HIGHLANDER Men Tapered Fit Mid Rise Dark Blue Jeans",
     price: '1,300',
-    mainImage: "/assets/img/j1.webp",
+    image: "/assets/img/j1.webp",
     thumbnails: ["/assets/img/j2.webp", "/assets/img/j3.webp", "/assets/img/j4.webp", "/assets/img/j5.webp"],
     sizes: ['30', '34', '36', '38'],
     Color: 'Color', Colortype: 'Dark Blue ',
@@ -80,7 +82,7 @@ const allProducts = [
     brand:"Generic",
     title: "Men's Hawaiian Beach Print Button Down Shirt, Short Sleeve",
     price: 800,
-    mainImage: "/assets/img/H1.jpg",
+    image: "/assets/img/H1.jpg",
     thumbnails: ['/assets/img/H2.jpg', '/assets/img/H3.jpg', '/assets/img/H6.jpg', '/assets/img/H8.jpg'],
     sizes: ['XL', 'XXL', 'Small', 'Large'],
 
@@ -106,7 +108,7 @@ const allProducts = [
     brand:"Kook N Keech",
     title: "Men's Denim  Shorts",
     price: 999,
-    mainImage: "/assets/img/f6.jpg",
+    image: "/assets/img/f6.jpg",
     thumbnails: ['/assets/img/i2.webp', '/assets/img/i3.jpg', '/assets/img/i4.jpg', '/assets/img/i5.jpg'],
     sizes: ['XL', 'XXL', 'Small', 'Large'],
     Color: 'Color', Colortype: 'blue & White ',
@@ -129,7 +131,7 @@ const allProducts = [
     category: "Shorts",
     title: "ADDIZ Lycra Shorts pack of 3 for Men",
     price: 999,
-    mainImage: "/assets/img/shorts.webp",
+    image: "/assets/img/shorts.webp",
     thumbnails: ['/assets/img/short1.jpg', '/assets/img/short4.jpg', '/assets/img/short2.jpg', '/assets/img/short3.jpg'],
     sizes: ['XL', 'XXL', 'Small', 'Large'],
     Color: 'Material composition', Colortype: 'Lycra ',
@@ -154,7 +156,7 @@ const allProducts = [
     brand:"Dcvmvmn",
     title: "Dcvmvmn Men's Shirt Slim Solid Color Long Sleeve British Style Cotton Shirt Office Casual Wear",
     price: 1000,
-    mainImage: "/assets/img/81.jpg",
+    image: "/assets/img/81.jpg",
     thumbnails: ['/assets/img/82.jpg', '/assets/img/83.jpg', '/assets/img/84.jpg', '/assets/img/85.jpg'],
     sizes: ['XL', 'XXL', 'Small', 'Large'],
 
@@ -181,7 +183,7 @@ const allProducts = [
     brand:"Aldo ",
     title: "Aldo TARANDI Black Womens Laptop Bag",
     price: 3000,
-    mainImage: "/assets/img/bag1.jpg",
+    image: "/assets/img/bag1.jpg",
     thumbnails: ['/assets/img/bag2.jpg', '/assets/img/bag3.jpg', '/assets/img/bag4.jpg', '/assets/img/bag5.jpg'],
     sizes: ['Small', 'Large'],
     Color: 'Color', Colortype: 'Black ',
@@ -205,7 +207,7 @@ const allProducts = [
     brand:"U.S. Polo Assn",
     title: "U.S. Polo Assn. Kids",
     price: 899,
-    mainImage: "/assets/img/10.jpg",
+   image: "/assets/img/10.jpg",
     thumbnails: ['/assets/img/9.jpg', '/assets/img/101.jpg', '/assets/img/102.jpg', '/assets/img/104.jpg'],
     sizes: ['2-3 years', '3-4 years', '6-7 years', '8-9 years', '9-10 years', '10-11 years'],
 
@@ -231,7 +233,7 @@ const allProducts = [
     brand:"AG Adriano Goldschmied",
     title: "AG Adriano Goldschmied Men's Benning Utility Shirt",
     price:'1,400',
-    mainImage: "/assets/img/111.jpg",
+    image: "/assets/img/111.jpg",
     thumbnails: ['/assets/img/11.jpg', '/assets/img/112.jpg', '/assets/img/113.jpg', '/assets/img/115.jpg'],
     sizes: ['XL', 'XXL', 'Small', 'Large', 'Medium'],
 
@@ -260,7 +262,7 @@ const allProducts = [
     brand:'DOINLINE',
     title: " DOINLINE Men's Corduroy Cotton Regular fit Casual Shirt",
     price: '1,600',
-    mainImage: "/assets/img/13.jpg",
+    image: "/assets/img/13.jpg",
     thumbnails: ['/assets/img/14.webp', '/assets/img/141.webp', '/assets/img/144.jpg', '/assets/img/142.webp'],
     sizes: ['XL', 'XXL', 'XXXL', 'Small', 'Large', 'Medium'],
 
@@ -291,7 +293,7 @@ const allProducts = [
     brand:'JINGPI',
     title: "Men's PU Leather Formal Oxford Dress Shoes",
     price: 2000,
-    mainImage: "/assets/img/shoe.jpg",
+    image: "/assets/img/shoe.jpg",
     thumbnails: [
       "/assets/img/shoe2.webp",
       "/assets/img/shoe3.webp",
@@ -321,7 +323,7 @@ const allProducts = [
     brand:"Titan",
     title: "Titan Smart 3 Premium Smart Watch,SingleSync BT Calling, 110+ Sports Modes, 200+ Smartwatch Faces",
     price: 4000,
-    mainImage: "/assets/img/smart.jpg",
+    image: "/assets/img/smart.jpg",
     thumbnails: ['/assets/img/smart.jpg', '/assets/img/sm1.jpg', '/assets/img/sm2.jpg', '/assets/img/sm3.jpg', '/assets/img/sm4.jpg', '/assets/img/sm5.jpg'],
     sizes: ['1.96" AMOLED', '1.85" AMOLED'],
     Color: 'Color', Colortype: 'Black',
@@ -358,7 +360,7 @@ const allProducts = [
     brand:"LOVE KINS",
     title: "Denim Shorts for Girls and Kids",
     price: 800,
-    mainImage: "/assets/img/s1_files/s3.jpg",
+    image: "/assets/img/s1_files/s3.jpg",
     thumbnails: ['/assets/img/s1_files/s1.jpg', '/assets/img/s1_files/s2.jpg', '/assets/img/s1_files/s3.jpg', '/assets/img/s1_files/s4.jpg'],
     sizes: ['7-8 Y', '9-10 Y', '11-12 Y', '13-14 Y', '15-16 Y', '16-17 Y'],
     new: 'Fabric', newtype: "Denim",
@@ -385,7 +387,7 @@ const allProducts = [
     brand:"Enrica",
     title: "Men Casual  denim shorts Combo of 4 ",
     price: '1,600',
-    mainImage: "/assets/img/c1.webp",
+   image: "/assets/img/c1.webp",
     thumbnails: ['/assets/img/c1.webp', '/assets/img/c3.jpg', '/assets/img/c5.webp', '/assets/img/c6.webp',],
     sizes: ['7-8 Y', '9-10 Y', '11-12 Y', '13-14 Y', '15-16 Y', '16-17 Y'],
 
@@ -412,7 +414,7 @@ const allProducts = [
     brand:'STIVERS',
     title: " Combo of 4 Checked Men Shirts  ",
     price: '1,900',
-    mainImage: '/assets/img/c2.webp',
+    image: '/assets/img/c2.webp',
     thumbnails: [],
     sizes: ['Small', 'Large', 'Medium', 'XL',],
 
@@ -439,7 +441,7 @@ const allProducts = [
     brand:'ReemJheem ',
     title: "ReemJheem Baby- Girl's Kid's Casual Wear Birthday Skirts Princess Knee Length Skirts Color Black With Mollty_R_J_224_8,9 Years Kidswear",
     price: '2,500',
-    mainImage: "/assets/img/sh1.jpg",
+    image: "/assets/img/sh1.jpg",
     thumbnails: ['/assets/img/sh5.jpg', '/assets/img/sh1.jpg', '/assets/img/sh2.jpg', '/assets/img/sh3.jpg', '/assets/img/sh4.jpg',],
     sizes: ['7-8 Y', '9-10 Y', '11-12 Y', '13-14 Y', '15-16 Y', '16-17 Y'],
     new: "Style", newtype: 'A-line',
@@ -482,7 +484,7 @@ const allProducts = [
     category: "Shoes",
     title: "Woodland Men's Leather Sneaker Shoes",
     price: 2000,
-    mainImage: "/assets/img/w1.webp",
+    image: "/assets/img/w1.webp",
     thumbnails: [
       "/assets/img/wood1.jpg",
       "/assets/img/wood2.jpg",
@@ -546,7 +548,7 @@ const allProducts = [
     brand:'FCUK',
     title: "FCUK series 2 Full touch Smartwatch with 1.69'' Large display,  Bluetooth Calling, SpO2, Metal body, Built-in Games, Heart rate monitor, Multiple Watch Faces and Long battery life",
     price: '5,500',
-    mainImage: "/assets/img/smt1.jpg",
+   image: "/assets/img/smt1.jpg",
     thumbnails: ['/assets/img/smt1.jpg', '/assets/img/smt2.jpg', '/assets/img/smt3.jpg', '/assets/img/smt4.jpg', '/assets/img/smt5.jpg', '/assets/img/smt7.jpg'],
     sizes: [],
     new: 'Color', newtype: 'Pink',
@@ -598,7 +600,7 @@ const allProducts = [
     brand:'BLACKX',
     title: "BLACKX Denim Skirt for Women| Short Denim Skirt for Women| Denim Slit Skirt for Women - 1003",
     price: '1,530',
-    mainImage: "/assets/img/sK1.jpg",
+    image: "/assets/img/sK1.jpg",
     thumbnails: ['/assets/img/sk1.jpg', '/assets/img/sk1.jpg', '/assets/img/sk3.jpg', '/assets/img/sk4.jpg', '/assets/img/sk5.jpg', '/assets/img/sk6.jpg'],
     sizes: ['small', 'large', 'medium', 'XL', 'XXL',],
     new: 'Material type', newtype: "Denim",
@@ -639,7 +641,7 @@ const allProducts = [
     brand:'Adidas',
     title: "Adidas Men Black Shoes - 11 (Jj5330)",
     price: '2,889',
-    mainImage: "/assets/img/adidas.webp",
+    image: "/assets/img/adidas.webp",
     thumbnails: [
       "/assets/img/ad3.webp",
       "/assets/img/ad1.webp",
@@ -692,7 +694,7 @@ const allProducts = [
     brand:"KOTTY",
     title: "KOTTY Women High Rise Relaxed Fit Cotton Lycra Blend Ankle Length Jeans,",
     price: '1,999',
-    mainImage: "/assets/img/je1.jpg",
+    image: "/assets/img/je1.jpg",
     thumbnails: ['/assets/img/je1.jpg', '/assets/img/je2.jpg', '/assets/img/je3.jpg', '/assets/img/je4.jpg', '/assets/img/je5.jpg',],
     sizes: ['L', '24', '26', '28', '30', '32', '34'],
     new: 'Occasion type', newtype: 'Casual',
@@ -739,7 +741,7 @@ const allProducts = [
     brand:'FLYING BERRY',
     title: "FLYING BERRY Women's Hand bag COMBO PACK (PREMIUM EDITION)",
     price: '2,488',
-    mainImage: "/assets/img/ba1.jpg",
+    image: "/assets/img/ba1.jpg",
     thumbnails: ['/assets/img/ba1.jpg', '/assets/img/ba2.jpg', '/assets/img/ba3.jpg', '/assets/img/ba4.jpg', '/assets/img/ba5.jpg',],
     sizes: ['L'],
     new: ' Color', newtype: 'Purple',
@@ -786,7 +788,7 @@ const allProducts = [
     brand:'Calvin Klein',
     title: "Calvin Klein Jeans Women's Quilted Jacket ",
     price: '2,999',
-    mainImage: "/assets/img/calvin.webp",
+    image: "/assets/img/calvin.webp",
     thumbnails: ["/assets/img/calvin.webp", "/assets/img/cal1.jpg", "/assets/img/cal2.jpg", "/assets/img/cal3.jpg", "/assets/img/cal4.jpg"],
     sizes: ['Large', 'Medium', 'XL'],
     Color: 'Color', Colortype: 'Black ',
@@ -822,7 +824,7 @@ const allProducts = [
     brand:"WoodLand",
     title: "WoodLand Lether Belt for Men ",
     price: 400,
-    mainImage: "/assets/img/wood.jpg",
+    image: "/assets/img/wood.jpg",
     thumbnails: ["/assets/img/wood.jpg", "/assets/img/woo2.jpg", "/assets/img/woo1.jpg", "/assets/img/woo3.jpg", "/assets/img/woo4.jpg"],
 
     Color: 'Color', Colortype: ' Tan ',
@@ -857,7 +859,7 @@ const allProducts = [
     title: "Nike Air Force 1 Mid '07 All Triple Black Blackout Retro Classic Shoes",
     price: '1,759',
     Reduceprice: '2,199',
-    mainImage: "/assets/img/air.png",
+    image: "/assets/img/air.png",
     thumbnails: [
       "/assets/img/air.png",
       "/assets/img/air2.png",
@@ -912,7 +914,7 @@ const allProducts = [
     price:'1,404',
 
     Reduceprice: '1,755',
-    mainImage: "/assets/img/jordan.png",
+    image: "/assets/img/jordan.png",
     thumbnails: [
       "/assets/img/jordan.png",
       "/assets/img/jor2.jpg",
@@ -971,7 +973,7 @@ const allProducts = [
     price: '1,119',
 
     Reduceprice: '1,399',
-    mainImage: "/assets/img/blazer.png",
+    image: "/assets/img/blazer.png",
     thumbnails: [
       "/assets/img/blazer.png",
       "/assets/img/bla1.jpg",
@@ -1035,7 +1037,7 @@ const allProducts = [
     price: '1,280',
 
     Reduceprice: '1,600',
-    mainImage: "/assets/img/crater.png",
+    image: "/assets/img/crater.png",
     thumbnails: [
       "/assets/img/crater.png",
       "/assets/img/crat1.jpg",
@@ -1101,7 +1103,7 @@ const allProducts = [
     price: '1,199',
 
     Reduceprice: '1,499',
-    mainImage: "/assets/img/hippie.png",
+    image: "/assets/img/hippie.png",
     thumbnails: [
       
       "/assets/img/hip1.webp",
@@ -1169,7 +1171,7 @@ const allProducts = [
     price: '4,500',
 
     Reduceprice: '9000',
-    mainImage: "/assets/img/smart2.jpg",
+    image: "/assets/img/smart2.jpg",
     thumbnails: [
       
       "/assets/img/smart2.jpg",
@@ -1233,7 +1235,7 @@ const allProducts = [
 
 function CombinedProductPage() {
  
-  
+  const {addToCart}=useCart()
 
 
   const { id } = useParams();
@@ -1270,7 +1272,7 @@ function CombinedProductPage() {
 
       <section id="prodetails" className="section-p1 ">
         {/* Image Gallery */}
-        <ImageGallery mainImage={product.mainImage} thumbnails={product.thumbnails} />
+        <ImageGallery mainImage={product.image} thumbnails={product.thumbnails} />
 
         {/* Product Details */}
         <div className="single-pro-details ">
@@ -1327,7 +1329,11 @@ function CombinedProductPage() {
 
           <button
             className="normal"
-            onClick={handleAddToCart}
+            
+            onClick={() => {
+    handleAddToCart();
+    addToCart(product);
+  }}
           >
           Add to Cart
         </button>
@@ -1518,7 +1524,10 @@ function CombinedProductPage() {
     )}
   </div>
 )}
-               <Link to={"/cart"} onClick={(e) => e.stopPropagation()}>
+               <Link to={"/cart"}    onClick={() => {
+    handleAddToCart();
+    addToCart(prod);
+  }}>
               Add to cart
             </Link>
               

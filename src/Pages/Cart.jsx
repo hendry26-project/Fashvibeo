@@ -1,17 +1,13 @@
 import { useState } from 'react';
 import '../index.css';
 import PaymentForm from '../Data/PaymentForm';
-import Footer from '../Data/Footer';  // fixed import name
+import Footer from '../Data/Footer';
 import Header from '../Data/Header';
 import { motion } from 'framer-motion';
+import { useCart } from '../Data/CartContext';
 
 function CartPage() {
-  const [cartItems, setCartItems] = useState([
-    { id: 1, name: 'Highlander Men Blue Jeans', price: 88, quantity: 1, image: '/assets/img/j1.webp' },
-    { id: 2, name: 'Floral Hipster Shirt', price: 78, quantity: 1, image: '/assets/img/HSS152-Floral-Hipster.jpg' },
-    { id: 3, name: "Ladyful Men's Corduroy Shirt", price: 85, quantity: 1, image: '/assets/img/13.jpg' }
-  ]);
-
+  const { cartItems, updateQuantity, removeItem, clearCart } = useCart();
   const [coupon, setCoupon] = useState('');
   const [discount, setDiscount] = useState(0);
   const [paymentVisible, setPaymentVisible] = useState(false);
@@ -26,23 +22,33 @@ function CartPage() {
   });
   const [paymentErrors, setPaymentErrors] = useState({});
 
-  const updateQuantity = (id, quantity) => {
-    if (quantity < 1) return;
-    setCartItems(prev => prev.map(item => (item.id === id ? { ...item, quantity } : item)));
+  const parsePrice = (price) => {
+    const clean = String(price).replace(/,/g, '');
+    return isNaN(Number(clean)) ? 0 : Number(clean);
   };
 
-  const removeItem = (id) => {
-    setCartItems(prev => prev.filter(item => item.id !== id));
-  };
+  const subtotal = cartItems.reduce(
+    (acc, item) => acc + parsePrice(item.price) * item.quantity,
+    0
+  );
 
-  const subtotal = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
   const total = Math.max(subtotal - discount, 0);
 
   const applyCoupon = () => {
+    const coupons = {
+      save10: 10,
+      save15: 15,
+      save20: 20,
+      save25: 25,
+      save30: 30,
+      save35: 35,
+      save40: 40,
+      save50: 50,
+    };
     const code = coupon.trim().toLowerCase();
-    if (code === 'save10') {
-      setDiscount(10);
-      alert('Coupon applied! $10 discount granted.');
+    if (code in coupons) {
+      setDiscount(coupons[code]);
+      alert(`Coupon applied! ₹${coupons[code]} discount granted.`);
     } else {
       setDiscount(0);
       alert('Invalid or expired coupon.');
@@ -53,7 +59,6 @@ function CartPage() {
     setPaymentVisible(!paymentVisible);
     setPaymentErrors({});
   };
-
 
   const validatePayment = () => {
     const errors = {};
@@ -75,7 +80,7 @@ function CartPage() {
   const handleCheckout = () => {
     if (validatePayment()) {
       alert('Purchase successful! Thank you.');
-      setCartItems([]);
+      clearCart();
       setPaymentVisible(false);
       setCoupon('');
       setDiscount(0);
@@ -121,28 +126,25 @@ function CartPage() {
                   </td>
                 </tr>
               ) : (
-                cartItems.map(item => (
+                cartItems.map((item) => (
                   <tr key={item.id}>
                     <td>
-                      <button onClick={() => removeItem(item.id)} aria-label={`Remove ${item.name}`}>
-                        <i className="fa fa-dot-circle-o"></i>
-                      </button>
+                      <button onClick={() => removeItem(item.id)}>Remove</button>
                     </td>
                     <td>
-                      <img src={item.image} alt={item.name} style={{ maxWidth: '60px' }} />
+                      <img src={item.image} alt={item.title} style={{ maxWidth: '60px' }} />
                     </td>
-                    <td>{item.name}</td>
-                    <td>${item.price.toFixed(2)}</td>
+                    <td>{item.title}</td>
+                    <td>₹{parsePrice(item.price).toFixed(2)}</td>
                     <td>
                       <input
                         type="number"
                         min="1"
                         value={item.quantity}
-                        onChange={e => updateQuantity(item.id, +e.target.value)}
-                        aria-label={`Quantity for ${item.name}`}
+                        onChange={(e) => updateQuantity(item.id, +e.target.value)}
                       />
                     </td>
-                    <td>${(item.price * item.quantity).toFixed(2)}</td>
+                    <td>₹{(parsePrice(item.price) * item.quantity).toFixed(2)}</td>
                   </tr>
                 ))
               )}
@@ -165,7 +167,7 @@ function CartPage() {
                 type="text"
                 placeholder="Enter Your Coupon"
                 value={coupon}
-                onChange={e => setCoupon(e.target.value)}
+                onChange={(e) => setCoupon(e.target.value)}
                 aria-label="Coupon code"
               />
               <button className="normal" onClick={applyCoupon}>
@@ -180,7 +182,7 @@ function CartPage() {
               <tbody>
                 <tr>
                   <td>Cart Subtotal</td>
-                  <td>${subtotal.toFixed(2)}</td>
+                  <td>₹{subtotal.toFixed(2)}</td>
                 </tr>
                 <tr>
                   <td>Shipping</td>
@@ -190,14 +192,14 @@ function CartPage() {
                   <td>
                     <strong>Discount</strong>
                   </td>
-                  <td>${discount.toFixed(2)}</td>
+                  <td>₹{discount.toFixed(2)}</td>
                 </tr>
                 <tr>
                   <td>
                     <strong>Total</strong>
                   </td>
                   <td>
-                    <strong>${total.toFixed(2)}</strong>
+                    <strong>₹{total.toFixed(2)}</strong>
                   </td>
                 </tr>
               </tbody>
