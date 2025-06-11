@@ -663,14 +663,14 @@ export const shop2=[
 },
 {
   id:7,
-  image: "/assets/img/shorts.webp",
-  link: "/product1/5",
+  image: "/assets/img/c1.webp",
+  link: "/product1/14",
   
 },
 {
   id:7,
-  image: "/assets/img/81.jpg",
-  link: "/product1/6",
+  image: "/assets/img/wood.jpg",
+  link: "/product1/24",
   
 }
 ];

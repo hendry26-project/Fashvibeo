@@ -1899,6 +1899,9 @@ footer .copyright {
 
 #cart table td:nth-child(3) {
   width: 250px;
+ white-space: normal;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
   text-align: center;
 }
 
@@ -2508,7 +2511,7 @@ label {
 
 .red {
   color: black;
-  font-size: 16px;
+  font-size: 14px;
 }
 
 .price {
@@ -2554,6 +2557,9 @@ h1{
   padding-right:40px;
 }
 .man{ font-size: 17px; min-width: 150px;font-weight: 700 }
+.reds{ 
+  color: red; 
+  font-size: 20px ;}
 /*ipad*/
 @media(max-width:799px) {
 
@@ -3835,4 +3841,7 @@ h1{
         
         
       }
+      .reds{ 
+ 
+  font-size: 17px ;}
 }

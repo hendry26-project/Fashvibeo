@@ -15,7 +15,6 @@ import '../index.css';
 import Header from '../Data/Header';
 
 
-
 const MotionWrapper = ({ children, initial, whileInView, transition }) => (
   <motion.section
     initial={initial}
@@ -25,6 +24,7 @@ const MotionWrapper = ({ children, initial, whileInView, transition }) => (
     {children}
   </motion.section>
 );
+
 
 
 function Index() {
@@ -432,7 +432,7 @@ function Index() {
               </h1>
               <h2 className="sliderPrice"><del>{shoe.Reduceprice}</del></h2>
               <h2 className="sliderPrice2">{shoe.price}</h2>
-              <Link to="/footwear/sneakers">
+              <Link to="/shop/sneakers">
                 <button className="buyButton">BUY NOW!</button>
               </Link>
 

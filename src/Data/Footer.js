@@ -1,19 +1,52 @@
 import MotionSection from "./MotionSection";
+import { useState } from "react";
+
+
+
+
 
 const Footer = () => {
+ 
+
+  const [inputValue, setInputValue] = useState('');
+  const [savedEmails, setSavedEmails] = useState([]);
+
+  const handleChange = (e) => {
+    setInputValue(e.target.value);
+  };
+
+  const handleSubscribe = () => {
+    if (inputValue.trim() !== '') {
+      setSavedEmails([...savedEmails, inputValue]);
+      setInputValue(''); // clear input
+      alert('Subscribed successfully!');
+    }
+  };
   return (
     <MotionSection>
 
 
-      <section id="news">
-        <div>
-          <h1>Subscribe To The Newsletter</h1>
-        </div>
-        <div className="sub">
-          <input type="email" placeholder="Enter your email" className="normal" /><br /><br />
-          <button className="normal">Subscribe</button>
-        </div>
-      </section>
+        <section id="news">
+      <div>
+        <h1>Subscribe To The Newsletter</h1>
+      </div>
+      <div className="sub">
+        <input
+          type="email"
+          value={inputValue}
+          onChange={handleChange}
+          placeholder="Enter your email"
+          className="normal"
+        />
+        <br /><br />
+        <button className="normal" onClick={handleSubscribe}>
+          Subscribe
+        </button>
+
+        
+        
+      </div>
+    </section>
 
       <footer className="section-p1">
         <div className="col">

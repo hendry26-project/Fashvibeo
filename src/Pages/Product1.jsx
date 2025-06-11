@@ -1283,7 +1283,7 @@ function CombinedProductPage() {
  {product.Reduceprice && parseFloat(product.Reduceprice.replace(/,/g, '')) > parseFloat(product.price.replace(/,/g, '')) ? (
   <>
     <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-      <p className="red" style={{ color: "red", fontSize: "20px" }}>
+      <p className="reds"  >
         -({Math.round(
           ((parseFloat(product.Reduceprice.replace(/,/g, '')) - parseFloat(product.price.replace(/,/g, '')))
             / parseFloat(product.Reduceprice.replace(/,/g, ''))) * 100
@@ -1476,27 +1476,27 @@ function CombinedProductPage() {
               {prod.brand && <span className='i'>{prod.brand}</span>}
               <h5 >{prod.title}</h5>
             <div className="star">★★★★★</div>
-                                                <div  className='pric'   >
-                                 
-                                 
-                       <h4 className='price'>₹{prod.price}</h4>
-                     
-              {prod.Reduceprice && prod.Reduceprice > prod.price && (
-                <>
-                           <h4 className='mrp'>M.R.P:</h4>
-                           <h4 className='mrp'>
-                    <del>₹{prod.Reduceprice}</del>
-                  </h4>
-                            <h4 className='red' >
-                    ({Math.round(((prod.Reduceprice - prod.price) / prod.Reduceprice) * 100)}% off)
-                  </h4>
-                           
-                           
-                </>
-                       
-              )}
-                    
-            </div>
+            <div className='pric'>
+                    <h4 className='price'>₹{prod.price}</h4>
+
+                    {prod.Reduceprice && (
+                      parseFloat(prod.Reduceprice.replace(/,/g, '')) > parseFloat(prod.price.replace(/,/g, '')) && (
+                        <>
+                          <h4 className='mrp'>M.R.P:</h4>
+                          <h4 className='mrp'>
+                            <del>₹{prod.Reduceprice}</del>
+                          </h4>
+                          <h4 className='red'>
+                            (
+                            {Math.round(
+                              ((parseFloat(prod.Reduceprice.replace(/,/g, '')) - parseFloat(prod.price.replace(/,/g, '')))
+                                / parseFloat(prod.Reduceprice.replace(/,/g, ''))) * 100
+                            )}% off)
+                          </h4>
+                        </>
+                      )
+                    )}
+                  </div>
                     
                      
                      
