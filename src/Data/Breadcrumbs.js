@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 function Breadcrumbs({ product }) {
@@ -28,7 +28,7 @@ function Breadcrumbs({ product }) {
 
   return (
     <nav style={{ fontSize: "14px", margin: "15px 0" }}>
-      <Link to="/" style={{ textDecoration: "none", color: "#555" }}>
+      <Link to="/Shop" style={{ textDecoration: "none", color: "#555" }}>
         Shop
       </Link>
 
@@ -43,7 +43,7 @@ function Breadcrumbs({ product }) {
         <>
           <span style={{ margin: "0 6px" }}>›</span>
           <Link
-            to={`/shop/${categorySlug}`}
+            to={`/Shop/${categorySlug}`}
             style={{ textDecoration: "none", color: "#555" }}
           >
             {categoryCap}

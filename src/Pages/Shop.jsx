@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import '../index.css';
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -26,8 +26,8 @@ function Shop() {
     }
   }, [slug, selectedCategory]);
 
-  const filteredProducts = Products.filter((product) => {
-    const productCategorySlug = product.categorySlug || "";
+  const filteredProducts = Products.filter((product1) => {
+    const productCategorySlug = product1.categorySlug || "";
     const selectedCatSlug = selectedCategory.toLowerCase();
 
     const categoryMatch = selectedCategory
@@ -35,7 +35,7 @@ function Shop() {
       : false; // change `true` to `false` so nothing shows without category
 
     const genderMatch = selectedGender
-      ? (product.gender || "").toLowerCase() === selectedGender.toLowerCase()
+      ? (product1.gender || "").toLowerCase() === selectedGender.toLowerCase()
       : true;
 
     return categoryMatch && genderMatch;
@@ -142,8 +142,7 @@ function Shop() {
           (
             {Math.round(
               ((parseFloat(product1.Reduceprice.replace(/,/g, '')) - parseFloat(product1.price.replace(/,/g, '')))
-              / parseFloat(product1.Reduceprice.replace(/,/g, ''))) * 100
-            )}% off)
+              / parseFloat(product1.Reduceprice.replace(/,/g, ''))) * 100)}% off)
         </h4>
       </>
     )

@@ -1511,10 +1511,7 @@ footer .copyright {
 
 }
 
-#prodetail .single-pro-details div p {
-  color: black;
 
-}
 
 #prodetail .single-pro-details .size {
   width: 50px;
@@ -2558,7 +2555,7 @@ h1{
 }
 .man{ font-size: 17px; min-width: 150px;font-weight: 700 }
 .reds{ 
-  color: red; 
+  color: red;
   font-size: 20px ;}
 /*ipad*/
 @media(max-width:799px) {
@@ -3842,6 +3839,7 @@ h1{
         
       }
       .reds{ 
+       
  
   font-size: 17px ;}
 }

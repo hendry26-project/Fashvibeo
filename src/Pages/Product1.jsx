@@ -1283,7 +1283,7 @@ function CombinedProductPage() {
  {product.Reduceprice && parseFloat(product.Reduceprice.replace(/,/g, '')) > parseFloat(product.price.replace(/,/g, '')) ? (
   <>
     <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-      <p className="reds"  >
+      <p className="reds" style={{color:"red"}} >
         -({Math.round(
           ((parseFloat(product.Reduceprice.replace(/,/g, '')) - parseFloat(product.price.replace(/,/g, '')))
             / parseFloat(product.Reduceprice.replace(/,/g, ''))) * 100
